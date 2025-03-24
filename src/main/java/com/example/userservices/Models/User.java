@@ -8,9 +8,9 @@ import lombok.Setter;
 import java.util.List;
 
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class User extends BaseModel{
     private String name;
     private String email;
