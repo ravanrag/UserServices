@@ -20,5 +20,6 @@ public class UserResponseDTO {
         responseDTO.setName(user.getName());
         responseDTO.setRoleList(user.getRoles());
         return responseDTO;
+
     }
 }
