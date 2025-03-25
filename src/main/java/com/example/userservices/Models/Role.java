@@ -1,10 +1,12 @@
 package com.example.userservices.Models;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Roles extends BaseModel{
+@Entity
+public class Role extends BaseModel{
     private String Value;
 }

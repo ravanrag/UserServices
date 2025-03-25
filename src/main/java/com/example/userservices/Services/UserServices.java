@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 public class UserServices {
 
     private UserRepo userRepo;
+    UserServices(UserRepo userRepo){
+        this.userRepo=userRepo;
+    }
 
     public User signUp(String userName, String email, String password) {
         User user = new User();

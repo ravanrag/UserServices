@@ -1,8 +1,7 @@
 package com.example.userservices.DTOs;
 
-import com.example.userservices.Models.Roles;
+import com.example.userservices.Models.Role;
 import com.example.userservices.Models.User;
-import jakarta.servlet.http.PushBuilder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +10,15 @@ import java.util.List;
 @Getter
 @Setter
 public class UserResponseDTO {
-    public String name;
+    public String username;
     public String email;
-    public List<Roles> rolesList;
+    public List<Role> roles;
 
     public static UserResponseDTO convertUserToUserResponseDTO(User user){
         UserResponseDTO userResponseDTO = new UserResponseDTO();
+        userResponseDTO.setUsername(user.getName());
         userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setRolesList(user.getRolesList());
+        userResponseDTO.setRoles(user.getRoleList());
         return userResponseDTO;
     }
 }
