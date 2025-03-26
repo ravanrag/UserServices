@@ -10,13 +10,13 @@ import java.util.List;
 @Getter
 @Setter
 public class UserResponseDTO {
-    public String username;
+    public String name;
     public String email;
     public List<Role> roles;
 
     public static UserResponseDTO convertUserToUserResponseDTO(User user){
         UserResponseDTO userResponseDTO = new UserResponseDTO();
-        userResponseDTO.setUsername(user.getName());
+        userResponseDTO.setName(user.getName());
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setRoles(user.getRoleList());
         return userResponseDTO;

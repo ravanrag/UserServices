@@ -1,13 +1,12 @@
 package com.example.userservices.Controllers;
 
+import com.example.userservices.DTOs.LoginRequestDTO;
 import com.example.userservices.DTOs.SignUpRequestDTO;
 import com.example.userservices.DTOs.UserResponseDTO;
+import com.example.userservices.Models.Token;
 import com.example.userservices.Models.User;
 import com.example.userservices.Services.UserServices;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -19,7 +18,18 @@ public class UserController {
     }
     @PostMapping("/signup")
     public UserResponseDTO signUp(@RequestBody SignUpRequestDTO signUpRequestDTO){
-        User user = userServices.signUp(signUpRequestDTO.getUserName(),signUpRequestDTO.getEmail(),signUpRequestDTO.getPassword());
+        User user = userServices.signUp(signUpRequestDTO.getName(),signUpRequestDTO.getEmail(),signUpRequestDTO.getPassword());
+        return UserResponseDTO.convertUserToUserResponseDTO(user);
+    }
+
+    @GetMapping("/login")
+    public Token login(@RequestBody LoginRequestDTO loginRequestDTO){
+        return userServices.login(loginRequestDTO.getEmail(), loginRequestDTO.getPassword());
+    }
+
+    @GetMapping("/validate/{token}")
+    public UserResponseDTO validate(@PathVariable("token") String token){
+        User user = userServices.validateToken(token);
         return UserResponseDTO.convertUserToUserResponseDTO(user);
     }
 }
